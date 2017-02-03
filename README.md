@@ -3,6 +3,7 @@
 ## Setup
 
 ```sh
+brew install watchman
 npm install
 lerna bootstrap
 ```

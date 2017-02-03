@@ -1,12 +1,17 @@
 {
-  "name": "test-monorepo-component",
+  "name": "web-component",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
     "babel": "NODE_ENV=production babel ./src --out-dir ./dist",
     "css": "cpx './src/**/*.css' './dist'",
-    "build": "npm run babel && npm run css"
+    "build": "npm run babel && npm run css",
+    "postinstall": "echo $npm_package_config_watchman_build_js | watchman -j && echo $npm_package_config_watchman_build_css | watchman -j"
+  },
+  "config": {
+    "watchman-build-js": "[\"trigger\", \".\", { \"name\": \"build-js\", \"expression\": [\"match\", \"src/**/*.js\", \"wholename\"], \"command\": [\"npm\", \"run\", \"babel\"] }]",
+    "watchman-build-css": "[\"trigger\", \".\", { \"name\": \"build-css\", \"expression\": [\"match\", \"src/**/*.css\", \"wholename\"], \"command\": [\"npm\", \"run\", \"css\"] }]"
   },
   "author": "",
   "license": "ISC",

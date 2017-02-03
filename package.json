@@ -1,9 +1,4 @@
 {
-  "scripts": {
-    "preinstall": "./bin/preinstall.sh",
-    "postinstall": "./bin/postinstall.sh",
-    "add-package": "./bin/add-package.sh"
-  },
   "devDependencies": {
     "lerna": "2.0.0-beta.34"
   }
